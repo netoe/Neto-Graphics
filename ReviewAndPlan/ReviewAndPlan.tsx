@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import {KeyNetoBridgeName, NetoBridge} from '../../core/app/neto-bridge';
+import {BridgeNetoCallback, getNetoCallbackBridge} from '../helpers/bridge-neto-callback';
 import {R, RFF} from './resources';
 import {useStyles} from './styles';
 
@@ -27,11 +27,11 @@ export const ReviewAndPlan = React.memo<IProps>(() => {
 	};
 
 	const onCommitValues = () => {
-		const bridge = window[KeyNetoBridgeName];
+		const bridge = getNetoCallbackBridge();
 		console.log('patch:', patch);
 		if (!bridge) {return console.error('Failed to resolve the neto bridge!');}
-		if (!patch[RFF.plans.id] && !patch[RFF.plans.id]) {if (!prompt('Quit with the box(es) empty!')) {return; }}
-		bridge.callback(NetoBridge.newSuccessiveResult({reviews: patch[RFF.reviews.id], plans: patch[RFF.plans.id]}));
+		if (!patch[RFF.plans.id] && !patch[RFF.plans.id]) {if (!confirm('Quit with the box(es) empty!')) {return; }}
+		bridge.callback(BridgeNetoCallback.newSuccessiveResult({reviews: patch[RFF.reviews.id], plans: patch[RFF.plans.id]}));
 	};
 
 	const renderAppBar = () => (

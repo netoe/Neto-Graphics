@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import {AppNavigator, IMenuItem} from '../components/AppNavigator';
+import {doReportTheLostOfNetoBridge, getNetoDemoAndDevelopment} from '../helpers/bridge-neto-core';
 import {R} from './resources';
 import {useStyles} from './styles';
 
@@ -17,6 +18,7 @@ interface IState {}
 
 export const AppHome = React.memo<IProps>(() => {
 	const cls = useStyles();
+	const [NetoDemoAndDevelopment] = React.useState(getNetoDemoAndDevelopment);
 
 	const [selected, setSelected] = React.useState(undefined as IMenuItem | undefined);
 
@@ -28,6 +30,13 @@ export const AppHome = React.memo<IProps>(() => {
 	const onMenuClick = (menu: IMenuItem) => {
 		setSelected(menu);
 		console.log('clicked', menu);
+	};
+
+	const onTestButtonClicked = () => {
+		if (!NetoDemoAndDevelopment) {return doReportTheLostOfNetoBridge({alert: true});}
+		NetoDemoAndDevelopment.showReviewAndPlanDialog().then((res) => {
+			console.log('Finished with', res);
+		}).catch(ex => console.error('Failed with', ex));
 	};
 
 	const renderAppBar = () => (
@@ -51,8 +60,8 @@ export const AppHome = React.memo<IProps>(() => {
 	);
 
 	const renderPageBody = () => (
-		<div className={cls.page}>
-			<Button variant='contained' color='primary'>Hello {JSON.stringify(selected)}</Button>
+		<div className={cls.page} style={{padding: 18}}>
+			<Button variant='contained' color='primary' onClick={onTestButtonClicked}>Hello {JSON.stringify(selected)}</Button>
 			{receipts ? receipts.map(((schedule: any) => (
 				<div>
 					{JSON.stringify(schedule)}
