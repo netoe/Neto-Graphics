@@ -42,10 +42,7 @@ export const AppHome = React.memo<IProps>(() => {
 	const renderBody = () => (
 		<div className={cls.body}>
 			<div className={cls.nav}>
-				<AppNavigator pages={[
-					{icon: 'icon.png', text: 'Home'}, {icon: 'icon.png', text: 'Home'}, {icon: 'icon.png', text: 'Home'},
-					{icon: 'icon.png', text: 'Home'}, {icon: 'icon.png', text: 'Home'}, {icon: 'icon.png', text: 'Home'},
-				]} onSelected={onMenuClick}/>
+				<AppNavigator pages={R.pages} onSelected={onMenuClick}/>
 			</div>
 			<div className={cls.content}>
 				{renderPageBody()}
