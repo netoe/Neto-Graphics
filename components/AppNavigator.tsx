@@ -4,6 +4,7 @@ import React from 'react';
 import {MenuIconBox} from '../views/MenuIconBox';
 
 export interface IMenuItem {
+	id: string;
 	text: string;
 	icon: string;
 }
@@ -15,7 +16,7 @@ interface IProps {
 
 export const AppNavigator = React.memo<IProps>(({pages, onSelected}: IProps) => {
 	// const cls = useStyles();
-	const [selected, setSelected] = React.useState(undefined as IMenuItem | undefined);
+	const [selected, setSelected] = React.useState(pages[0] as IMenuItem | undefined);
 	const onMenuClick = (menu: IMenuItem) => {
 		if (selected === menu) {return;}
 		onSelected(menu);

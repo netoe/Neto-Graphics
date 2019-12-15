@@ -5,7 +5,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import {IBuiltinApplication} from '../applications/BuiltinApplications';
+import {DynamicalApplications} from '../applications/DynamicalApplicationsImporter';
+import {DynamicalApplicationsLoader} from '../applications/DynamicalApplicationsLoader';
 import {AppNavigator, IMenuItem} from '../components/AppNavigator';
 import {doReportTheLostOfNetoBridge, getNetoDemoAndDevelopment} from '../helpers/bridge-neto-core';
 import {URM} from '../resources/resources';
@@ -17,14 +18,6 @@ let title = R.title;
 interface IProps {}
 
 interface IState {}
-
-// @ts-ignore
-// @see https://webpack.js.org/guides/public-path
-__webpack_public_path__ = URM.pathPrefixDynamicalImports;
-// @see https://babeljs.io/docs/en/babel-plugin-syntax-dynamic-import
-import(/* webpackChunkName: "AppScheduler" */ '../applications/AppScheduler').then((module: IBuiltinApplication) => {
-	console.log('Loaded module:', module);
-});
 
 export const AppHome = React.memo<IProps>(() => {
 	const cls = useStyles();
@@ -52,7 +45,7 @@ export const AppHome = React.memo<IProps>(() => {
 	const renderAppBar = () => (
 		<AppBar position='static'>
 			<Toolbar>
-				<div className={cls.headerLogoBox}><img className={cls.headerLogoImg} src='icon.png'/></div>
+				<div className={cls.headerLogoBox}><img className={cls.headerLogoImg} src={URM.logo}/></div>
 				<Typography variant="h6" color="inherit" className={cls.headerTitle}>{title}</Typography>
 			</Toolbar>
 		</AppBar>
@@ -61,9 +54,10 @@ export const AppHome = React.memo<IProps>(() => {
 	const renderBody = () => (
 		<div className={cls.body}>
 			<div className={cls.nav}>
-				<AppNavigator pages={R.pages} onSelected={onMenuClick}/>
+				<AppNavigator pages={DynamicalApplications} onSelected={onMenuClick}/>
 			</div>
 			<div className={cls.content}>
+				<DynamicalApplicationsLoader page={selected}/>
 				{renderPageBody()}
 			</div>
 		</div>
