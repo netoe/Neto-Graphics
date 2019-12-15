@@ -15,7 +15,7 @@ export const useStyles = makeStyles((theme: Theme) =>
 
 
 		ctnBodyHeader: {margin: 16},
-		ctnHeaderTabs: {},
-		ctnHeaderOptions: {},
+		ctnHeaderTabs: {display: 'flex', justifyContent: 'center'},
+		ctnHeaderOptions: {display: 'flex', justifyContent: 'flex-end'},
 	}),
 );
