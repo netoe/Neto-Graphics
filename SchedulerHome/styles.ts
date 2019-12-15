@@ -12,5 +12,10 @@ export const useStyles = makeStyles((theme: Theme) =>
 
 		body: {flex: 1, background: '#eee'},
 		page: {margin: '0 auto', maxWidth: 1080},
+
+
+		ctnBodyHeader: {margin: 16},
+		ctnHeaderTabs: {},
+		ctnHeaderOptions: {},
 	}),
 );
