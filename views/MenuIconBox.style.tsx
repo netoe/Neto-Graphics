@@ -3,10 +3,10 @@
 import React from 'react';
 import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 
-const iconSize = 50;
+const iconSize = 76;
 const styles = {
 	container: {
-		display: 'flex', flexFlow: 'column', alignItems: 'center', width: '80px', margin: '1px', background: '#eee',
+		display: 'flex', flexFlow: 'column', alignItems: 'center', width: '96px', margin: '2px 0', background: '#eee',
 		cursor: 'pointer',
 	},
 	icon: {height: iconSize, width: iconSize, borderRadius: '50%'},
