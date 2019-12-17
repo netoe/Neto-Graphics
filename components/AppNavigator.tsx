@@ -23,7 +23,9 @@ export const AppNavigator = React.memo<IProps>(({pages, onSelected}: IProps) => 
 		setSelected(menu);
 	};
 	return (
-		<div style={{background: '#ddd', height: '100%', padding: '8px 0'}}>
+		// There should be no "height: 100%" as it does make the real height larger than its parent
+		// because of its padding/border/margin.
+		<div style={{background: '#ddd', padding: '8px 0'}}>
 			{pages.map((page, index) => (
 				<MenuIconBox
 					key={index}

@@ -10,7 +10,8 @@ export const useStyles = makeStyles({
 	container: {height: '100%', display: 'flex', flexFlow: 'column'},
 	ctnAppBar: {background: '#383'},
 	headerTitle: {fontWeight: 'bold', fontSize: '1.5em'},
-	body: {flex: 1, background: '#eee'},
+	// Make the body scrollable, referring the fixed header.
+	body: {flex: 1, background: '#eee', overflow: 'auto'},
 });
 
 interface IProps {

@@ -30,7 +30,7 @@ export const DynamicalApplicationsLoader = React.memo<IProps>(({page}) => {
 	const Module = fetcher.getData();
 	if (!Module) {return <div>Error, Expected App is not Loaded</div>;}
 	return (
-		<div>
+		<div style={{height: '100%'}}>
 			<Module.default/>
 		</div>
 	);
