@@ -40,9 +40,13 @@ const newApp = (icon: string, text: string, importer: () => Promise<IBuiltinAppl
 // @see https://webpack.js.org/guides/public-path
 __webpack_public_path__ = URM.pathPrefixDynamicalImports;
 // @see https://babeljs.io/docs/en/babel-plugin-syntax-dynamic-import
-const appWorkspace = newApp('icon.png', 'Workspace', () => import(/* webpackChunkName: "AppWorkspace" */'./AppWorkspace'));
-const appScheduler = newApp('icon.png', 'Scheduler', () => import(/* webpackChunkName: "AppScheduler" */'./AppScheduler'));
+const appWorkspace = newApp('workspace.png', 'Workspace', () => import(/* webpackChunkName: "AppWorkspace" */'./AppWorkspace'));
+const appScheduler = newApp('schedules.png', 'Schedules', () => import(/* webpackChunkName: "AppScheduler" */'./AppScheduler'));
+const appNoting = newApp('noting.png', 'Notes', () => import(/* webpackChunkName: "AppWorkspace" */'./AppWorkspace'));
+const appMarketplace = newApp('calendar.png', 'Calendar', () => import(/* webpackChunkName: "AppScheduler" */'./AppScheduler'));
 export const DynamicalApplications: IDynamicalApp[] = [
 	appWorkspace,
 	appScheduler,
+	appNoting,
+	appMarketplace,
 ];
