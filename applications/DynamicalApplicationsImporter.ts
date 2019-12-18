@@ -44,9 +44,15 @@ const appWorkspace = newApp('workspace.png', 'Workspace', () => import(/* webpac
 const appScheduler = newApp('schedules.png', 'Schedules', () => import(/* webpackChunkName: "AppScheduler" */'./AppScheduler'));
 const appNoting = newApp('noting.png', 'Notes', () => import(/* webpackChunkName: "AppWorkspace" */'./AppWorkspace'));
 const appMarketplace = newApp('calendar.png', 'Calendar', () => import(/* webpackChunkName: "AppScheduler" */'./AppScheduler'));
+
+const appActivities = newApp('activities.png', 'Activities', () => import(/* webpackChunkName: "AppScheduler" */'./AppWorkspace'));
+const appNews = newApp('news.png', 'Subscriptions', () => import(/* webpackChunkName: "AppScheduler" */'./AppScheduler'));
+
 export const DynamicalApplications: IDynamicalApp[] = [
 	appWorkspace,
 	appScheduler,
 	appNoting,
 	appMarketplace,
+	appActivities,
+	appNews,
 ];
