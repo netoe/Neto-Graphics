@@ -1,6 +1,6 @@
 'use strict';
 
-import {defineNewGroupedButton, IGroupedButton} from '../mui-lib/controllers/GroupedButtons';
+import {defineNewGroupedButton} from '../mui-lib/widgets/GroupedButtons';
 
 export const R = {
 	title: 'Scheduler',
