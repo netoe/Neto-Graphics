@@ -1,10 +1,7 @@
 //
 
 import React from 'react';
-// FIXME About the imports of interfaces; always keep the definitions of types separated.
-import {IScheduleReceipt} from '../../core/scheduler/typed/receipts';
-// FIXME For neto web applications.
-import {mDemoSchedules} from '../../core/schedulerx/demo-schedules';
+import {Schedule} from '../../core/scheduler/schedule';
 import {GroupedButtons} from '../mui-lib/widgets/GroupedButtons';
 import {GroupedIconButtons} from '../mui-lib/widgets/GroupedIconButtons';
 import {EnumViewModes, ViewModeIconsDefaultDesktop} from '../mui-lib/widgets/GroupedViewModes';
@@ -12,18 +9,21 @@ import {CardSchedule} from '../views/CardSchedule';
 import {RR} from './resources';
 import {useStyles} from './styles';
 
-interface IProps {}
+type ISelectedTabKeys = 'schedules' | 'actions';
 
-export const PageSchedules = React.memo<IProps>(() => {
+interface IProps {
+	schedules: Schedule[];
+	selectedTab: ISelectedTabKeys;
+	onTabSelected: (key: ISelectedTabKeys) => any
+}
+
+export const PageSchedules = React.memo<IProps>(({schedules, selectedTab, onTabSelected}) => {
 	const cls = useStyles();
+	const tab = selectedTab === 'schedules' ? RR.tabSchedules.key : RR.tabActions.key;
 	const [mode, setMode] = React.useState(EnumViewModes.Cards);
-	const [tab, setTab] = React.useState(RR.tabSchedules.key);
-	const [receipts] = React.useState(undefined as IScheduleReceipt[] | undefined);
-
-	console.log('found receipts:', receipts);
 
 	const onTabChanged = (mode: number) => {
-		setTab(mode);
+		onTabSelected(mode === RR.tabSchedules.key ? 'schedules' : 'actions');
 	};
 
 	const onModeChanged = (mode: number) => {
@@ -54,7 +54,7 @@ export const PageSchedules = React.memo<IProps>(() => {
 		</div>
 	);
 
-	const renderUserSchedules = () => mDemoSchedules.map(schedule => (
+	const renderUserSchedules = () => schedules.map(schedule => (
 		<CardSchedule key={schedule.name} schedule={schedule}/>
 	));
 
