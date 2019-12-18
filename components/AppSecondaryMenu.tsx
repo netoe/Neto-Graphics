@@ -43,7 +43,7 @@ interface IProps {
 	color: string;
 	sections: IMenuSection[];
 	selectedMenuItemId: string;
-	onSelect: (entryId: string, item: IMenuItem) => any;
+	onSelect: (entryId: string, item: IMenuItem, section: IMenuSection) => any;
 }
 
 // Works like a router, providing the navigation functionality.
@@ -54,11 +54,11 @@ interface IProps {
 export const AppSecondaryMenu = React.memo<IProps>(({color, sections, selectedMenuItemId, onSelect}) => {
 	const cls = useStyles();
 
-	const renderMenuItems = (item: IMenuItem, index: number) => (
+	const renderMenuItems = (section: IMenuSection, item: IMenuItem, index: number) => (
 		<ListItem
 			key={item.id}
 			button selected={selectedMenuItemId === item.id}
-			onClick={() => onSelect(item.id, item)}
+			onClick={() => onSelect(item.id, item, section)}
 			className={clsx(cls.menuItem, {[cls.menuItemFollowed]: index > 0})}
 			style={selectedMenuItemId === item.id ? {background: color, color: 'white'} : {color: '#666'}}
 		>
@@ -70,7 +70,7 @@ export const AppSecondaryMenu = React.memo<IProps>(({color, sections, selectedMe
 		<li key={section.id} className={cls.listSection}>
 			<ul className={cls.ul}>
 				<ListSubheader style={{fontStyle: 'italic'}}>{section.name}</ListSubheader>
-				{section.items.map(renderMenuItems)}
+				{section.items.map((item, index) => renderMenuItems(section, item, index))}
 			</ul>
 		</li>
 	);
