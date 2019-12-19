@@ -1,6 +1,8 @@
 'use strict';
 
+import {act} from 'react-dom/test-utils';
 import {Schedule} from '../../core/scheduler/schedule';
+import {IAction} from '../../core/scheduler/typed/actions';
 import {IMenuItem, IMenuSection} from '../components/AppSecondaryMenu';
 import {defineNewGroupedButton} from '../mui-lib/widgets/GroupedButtons';
 
@@ -23,7 +25,7 @@ const secOverview: IMenuSection = newSection('overview', '总览', [
 	newMenuItem(secActions.id, secActions.name + '总览'),
 ]);
 const sections = [secOverview, secSchedules, secActions];
-const getSections = (schedules: Schedule[]): IMenuSection[] => [
+const getSections = (schedules: Schedule[], actions: IAction[]): IMenuSection[] => [
 	{
 		...secOverview,
 	}, {
@@ -31,6 +33,7 @@ const getSections = (schedules: Schedule[]): IMenuSection[] => [
 		items: schedules.map(schedule => newMenuItem(schedule.name, schedule.name)),
 	}, {
 		...secActions,
+		items: actions.map(action => newMenuItem(action._id, action.name)),
 	},
 ];
 

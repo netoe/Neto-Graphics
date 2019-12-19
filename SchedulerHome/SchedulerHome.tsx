@@ -2,13 +2,15 @@
 
 import React from 'react';
 import Button from '@material-ui/core/Button';
+import {IAction} from '../../core/scheduler/typed/actions';
 // FIXME About the imports of interfaces; always keep the definitions of types separated.
 import {IScheduleReceipt} from '../../core/scheduler/typed/receipts';
-import {mDemoSchedules} from '../../core/schedulerx/demo-schedules';
+import {mDemoActions, mDemoSchedules} from '../../core/schedulerx/demo-schedules';
 import {AppSecondaryMenu, IMenuItem, IMenuSection} from '../components/AppSecondaryMenu';
 // FIXME For neto web applications.
 import {LayoutEmbeddedApp} from '../components/LayoutEmbeddedApp';
 import {doReportTheLostOfNetoBridge, getNetoDemoAndDevelopment, getNetoScheduleReceiptsManager} from '../helpers/bridge-neto-core';
+import {PageAction} from './PageAction';
 import {PageSchedule} from './PageSchedule';
 import {PageSchedules} from './PageSchedules';
 import {R, RR} from './resources';
@@ -24,7 +26,8 @@ export const SchedulerHome = React.memo<IProps>(() => {
 	const cls = useStyles();
 	const [NetoDemoAndDevelopment] = React.useState(getNetoDemoAndDevelopment);
 	const [schedules] = React.useState(mDemoSchedules);
-	const [sections] = React.useState(RR.getSections(schedules));
+	const [actions] = React.useState(mDemoActions as IAction[]);
+	const [sections] = React.useState(RR.getSections(schedules, actions));
 	const [menuSectionIdSelected, setSelectedMenuSectionId] = React.useState(RR.secOverview.id);
 	const [menuItemIdSelected, setSelectedMenuItemId] = React.useState(RR.secSchedules.id);
 	const [receipts, setReceipts] = React.useState(undefined as IScheduleReceipt[] | undefined);
@@ -90,7 +93,11 @@ export const SchedulerHome = React.memo<IProps>(() => {
 		);
 	};
 	const renderSelectedAction = (menuItemIdSelected: string) => {
-
+		const action = actions.find(action => action._id === menuItemIdSelected);
+		if (!action) {return undefined; }
+		return (
+			<PageAction action={action}/>
+		);
 	};
 	const renderFallthroughPage = () => (
 		<div>
