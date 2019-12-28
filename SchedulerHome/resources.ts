@@ -1,9 +1,9 @@
 'use strict';
 
-import {act} from 'react-dom/test-utils';
 import {Schedule} from '../../core/scheduler/schedule';
 import {IAction} from '../../core/scheduler/typed/actions';
-import {IMenuItem, IMenuSection} from '../components/AppSecondaryMenu';
+import {getAppSecondaryMenu, IMenuSection, newMenuItem, newMenuSection} from '../components/AppSecondaryMenu';
+import {IMenuScriptItem} from '../Infra-Tools/Text-Tailor/AppMenus.resources';
 import {defineNewGroupedButton} from '../mui-lib/widgets/GroupedButtons';
 
 export const R = {
@@ -12,15 +12,15 @@ export const R = {
 	tabActions: '行为功能',
 };
 
-const newSection = (id: string, name: string, items: IMenuItem[]): IMenuSection => ({id, name, items});
-const newMenuItem = (id: string, name: string): IMenuItem => ({id, name});
-const secSchedules: IMenuSection = newSection('schedules', '计划任务', [
+export const AppSchedulerMenu = getAppSecondaryMenu<IMenuScriptItem, IMenuSection>();
+
+const secSchedules: IMenuSection = newMenuSection('schedules', '计划任务', [
 	newMenuItem('hourly', '整点计划'),
 ]);
-const secActions: IMenuSection = newSection('actions', '行为功能', [
+const secActions: IMenuSection = newMenuSection('actions', '行为功能', [
 	newMenuItem('notification-sound', '播放通知提示声'),
 ]);
-const secOverview: IMenuSection = newSection('overview', '总览', [
+const secOverview: IMenuSection = newMenuSection('overview', '总览', [
 	newMenuItem(secSchedules.id, secSchedules.name + '总览'),
 	newMenuItem(secActions.id, secActions.name + '总览'),
 ]);

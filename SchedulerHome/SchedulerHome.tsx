@@ -6,14 +6,14 @@ import {IAction} from '../../core/scheduler/typed/actions';
 // FIXME About the imports of interfaces; always keep the definitions of types separated.
 import {IScheduleReceipt} from '../../core/scheduler/typed/receipts';
 import {mDemoActions, mDemoSchedules} from '../../core/schedulerx/demo-schedules';
-import {AppSecondaryMenu, IMenuItem, IMenuSection} from '../components/AppSecondaryMenu';
+import {IMenuItem, IMenuSection} from '../components/AppSecondaryMenu';
 // FIXME For neto web applications.
 import {LayoutEmbeddedApp} from '../components/LayoutEmbeddedApp';
 import {doReportTheLostOfNetoBridge, getNetoDemoAndDevelopment, getNetoScheduleReceiptsManager} from '../helpers/bridge-neto-core';
 import {PageAction} from './PageAction';
 import {PageSchedule} from './PageSchedule';
 import {PageSchedules} from './PageSchedules';
-import {R, RR} from './resources';
+import {AppSchedulerMenu, R, RR} from './resources';
 import {useStyles} from './styles';
 
 const ScheduleReceiptsManager = getNetoScheduleReceiptsManager();
@@ -55,7 +55,7 @@ export const SchedulerHome = React.memo<IProps>(() => {
 	};
 
 	const renderPageNav = () => (
-		<AppSecondaryMenu
+		<AppSchedulerMenu
 			sections={sections} color={'#099'}
 			onSelect={onPageSelected} selectedMenuItemId={menuItemIdSelected}
 		/>
