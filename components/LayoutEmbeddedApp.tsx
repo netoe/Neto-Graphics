@@ -21,13 +21,14 @@ export const useStyles = makeStyles({
 
 interface IProps {
 	title: string;
+	embedded?: boolean;
 	nav?: React.ReactNode;
 	body: React.ReactNode;
 }
 
-export const LayoutEmbeddedApp = React.memo<IProps>(({title, nav, body}, next, cls = useStyles()) => (
+export const LayoutEmbeddedApp = React.memo<IProps>(({embedded, title, nav, body}, next, cls = useStyles()) => (
 	<div className={cls.container}>
-		<AppBar position='static' className={cls.ctnAppBar}>
+		<AppBar position='static' className={embedded || window['_$embedded'] ? cls.ctnAppBar : undefined}>
 			<Toolbar>
 				<Typography variant="h6" color="inherit" className={cls.headerTitle}>{title}</Typography>
 			</Toolbar>

@@ -15,6 +15,7 @@ let title = R.title;
 
 interface IProps {}
 
+if (window) {window['_$embedded'] = true;}
 export const AppHome = React.memo<IProps>(() => {
 	const cls = useStyles();
 
