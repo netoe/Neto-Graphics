@@ -48,6 +48,9 @@ const appMarketplace = newApp('calendar.png', 'Calendar', () => import(/* webpac
 const appActivities = newApp('activities.png', 'Activities', () => import(/* webpackChunkName: "AppScheduler" */'./AppWorkspace'));
 const appNews = newApp('news.png', 'Subscriptions', () => import(/* webpackChunkName: "AppScheduler" */'./AppScheduler'));
 
+// Infra Tools
+const infraTextTailor = newApp('text-tailor.png', 'Text Tailor', () => import(/* webpackChunkName: "AppTextTailor" */'./AppTextTailor'));
+
 export const DynamicalApplications: IDynamicalApp[] = [
 	appWorkspace,
 	appScheduler,
@@ -55,4 +58,5 @@ export const DynamicalApplications: IDynamicalApp[] = [
 	appMarketplace,
 	appActivities,
 	appNews,
+	infraTextTailor,
 ];
