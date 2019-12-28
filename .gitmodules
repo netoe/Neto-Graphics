@@ -1,3 +1,6 @@
 [submodule "mui-lib"]
 	path = mui-lib
 	url = https://github.com/zhanbei/mui-lib.git
+[submodule "Infra-Tools"]
+	path = Infra-Tools
+	url = https://github.com/zhanbei/Infra-Tools.git
