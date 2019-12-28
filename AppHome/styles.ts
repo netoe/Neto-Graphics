@@ -18,6 +18,7 @@ export const useStyles = makeStyles((theme: Theme) =>
 		nav: {
 			maxWidth: '120px', minWidth: '60px',
 			overflowY: 'auto', // Make the navigator scrollable, if needed.
+			overflowX: 'hidden', // Keep the horizontally overflowed content hidden, even when the labelled text is longer, like in English language.
 			// Make the children full width, ignoring their padding and margins( or borders).
 			// The "height: 100%" does not work, because of that.
 			display: 'flex',
