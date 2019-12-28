@@ -21,8 +21,8 @@ const secActions: IMenuSection = newMenuSection('actions', '行为功能', [
 	newMenuItem('notification-sound', '播放通知提示声'),
 ]);
 const secOverview: IMenuSection = newMenuSection('overview', '总览', [
-	newMenuItem(secSchedules.id, secSchedules.name + '总览'),
-	newMenuItem(secActions.id, secActions.name + '总览'),
+	newMenuItem(secSchedules._id, secSchedules.name + '总览'),
+	newMenuItem(secActions._id, secActions.name + '总览'),
 ]);
 const sections = [secOverview, secSchedules, secActions];
 const getSections = (schedules: Schedule[], actions: IAction[]): IMenuSection[] => [

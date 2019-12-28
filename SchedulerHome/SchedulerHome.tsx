@@ -28,8 +28,8 @@ export const SchedulerHome = React.memo<IProps>(() => {
 	const [schedules] = React.useState(mDemoSchedules);
 	const [actions] = React.useState(mDemoActions as IAction[]);
 	const [sections] = React.useState(RR.getSections(schedules, actions));
-	const [menuSectionIdSelected, setSelectedMenuSectionId] = React.useState(RR.secOverview.id);
-	const [menuItemIdSelected, setSelectedMenuItemId] = React.useState(RR.secSchedules.id);
+	const [menuSectionIdSelected, setSelectedMenuSectionId] = React.useState(RR.secOverview._id);
+	const [menuItemIdSelected, setSelectedMenuItemId] = React.useState(RR.secSchedules._id);
 	const [receipts, setReceipts] = React.useState(undefined as IScheduleReceipt[] | undefined);
 	React.useEffect(() => {
 		if (!ScheduleReceiptsManager) {return doReportTheLostOfNetoBridge({alert: false});}
@@ -50,7 +50,7 @@ export const SchedulerHome = React.memo<IProps>(() => {
 	};
 
 	const onPageSelected = (menuItemIdSelected: string, menuItem: IMenuItem, section: IMenuSection) => {
-		setSelectedMenuSectionId(section.id);
+		setSelectedMenuSectionId(section._id);
 		setSelectedMenuItemId(menuItemIdSelected);
 	};
 
@@ -69,11 +69,11 @@ export const SchedulerHome = React.memo<IProps>(() => {
 
 	const renderDynamicalPage = () => {
 		switch (menuSectionIdSelected) {
-			case RR.secOverview.id:
+			case RR.secOverview._id:
 				return renderSelectedOverview();
-			case RR.secSchedules.id:
+			case RR.secSchedules._id:
 				return renderSelectedSchedule(menuItemIdSelected);
-			case RR.secActions.id:
+			case RR.secActions._id:
 				return renderSelectedAction(menuItemIdSelected);
 			default:
 				return renderFallthroughPage();

@@ -9,7 +9,9 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import {useStyles} from './AppSecondaryMenu.styles';
 
 interface IBaseMenuItem {
-	id: string;
+	// Be clear about which one is better, is it configurable or compatible?
+	// Yes, use two interfaces and one mixed type(id|_id).
+	_id: string;
 	name: string;
 	// The selected background color.
 	color?: string;
@@ -21,8 +23,8 @@ export interface IMenuSection<T extends IMenuItem = IMenuItem> extends IBaseMenu
 	items: T[];
 }
 
-export const newMenuItem = (id: string, name: string): IMenuItem => ({id, name});
-export const newMenuSection = <T extends IMenuItem>(id: string, name: string, items: T[]): IMenuSection<T> => ({id, name, items});
+export const newMenuItem = (id: string, name: string): IMenuItem => ({_id: id, name});
+export const newMenuSection = <T extends IMenuItem>(id: string, name: string, items: T[]): IMenuSection<T> => ({_id: id, name, items});
 
 interface IProps<T extends IMenuItem, S extends IMenuSection<T>> {
 	// Theme Color
@@ -56,18 +58,18 @@ const AppSecondaryMenu = React.memo(<T extends IMenuItem, S extends IMenuSection
 
 	const renderMenuItems = (section: S, item: T, index: number) => (
 		<ListItem
-			key={item.id}
-			button selected={selectedMenuItemId === item.id}
-			onClick={() => onSelect(item.id, item, section)}
+			key={item._id}
+			button selected={selectedMenuItemId === item._id}
+			onClick={() => onSelect(item._id, item, section)}
 			className={clsx(cls.menuItem, {[cls.menuItemFollowed]: index > 0})}
-			style={selectedMenuItemId === item.id ? {background: item.color || color, color: 'white'} : {background: itemBackground, color: itemColor}}
+			style={selectedMenuItemId === item._id ? {background: item.color || color, color: 'white'} : {background: itemBackground, color: itemColor}}
 		>
 			<ListItemText primary={item.name} style={{margin: '6px 0'}} disableTypography={true}/>
 		</ListItem>
 	);
 
 	const renderSections = (section: S) => (
-		<li key={section.id} className={cls.listSection}>
+		<li key={section._id} className={cls.listSection}>
 			<ul className={cls.ul}>
 				<ListSubheader className={cls.sectionHeader} style={{color}}>{section.name}</ListSubheader>
 				{section.items.map((item, index) => renderMenuItems(section, item, index))}
