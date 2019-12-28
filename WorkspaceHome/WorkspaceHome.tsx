@@ -1,7 +1,7 @@
 //
 
 import React from 'react';
-import {LayoutEmbeddedApp} from '../components/LayoutEmbeddedApp';
+import {LayoutAppHeader} from '../components/LayoutAppHeader';
 import {R} from './resources';
 import {useStyles} from './styles';
 
@@ -19,7 +19,7 @@ export const WorkspaceHome = React.memo<IProps>(() => {
 	);
 
 	return (
-		<LayoutEmbeddedApp
+		<LayoutAppHeader
 			title={title} body={renderPageBody()}
 		/>
 	);

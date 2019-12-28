@@ -8,7 +8,7 @@ import {IScheduleReceipt} from '../../core/scheduler/typed/receipts';
 import {mDemoActions, mDemoSchedules} from '../../core/schedulerx/demo-schedules';
 import {IMenuItem, IMenuSection} from '../components/AppSecondaryMenu';
 // FIXME For neto web applications.
-import {LayoutEmbeddedApp} from '../components/LayoutEmbeddedApp';
+import {LayoutAppHeader} from '../components/LayoutAppHeader';
 import {doReportTheLostOfNetoBridge, getNetoDemoAndDevelopment, getNetoScheduleReceiptsManager} from '../helpers/bridge-neto-core';
 import {PageAction} from './PageAction';
 import {PageSchedule} from './PageSchedule';
@@ -111,7 +111,7 @@ export const SchedulerHome = React.memo<IProps>(() => {
 	);
 
 	return (
-		<LayoutEmbeddedApp
+		<LayoutAppHeader
 			title={title} body={renderPageBody()}
 			nav={renderPageNav()}
 		/>

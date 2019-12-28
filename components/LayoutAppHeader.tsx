@@ -1,4 +1,4 @@
-// The App Bar for Embedded Applications
+//
 
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
@@ -26,7 +26,9 @@ interface IProps {
 	body: React.ReactNode;
 }
 
-export const LayoutEmbeddedApp = React.memo<IProps>(({embedded, title, nav, body}, next, cls = useStyles()) => (
+// The layout with app header for embedded and standalone applications.
+// Possible Names: [ LayoutAppHeader | LayoutEmbeddedApp | LayoutStandaloneApp ]
+export const LayoutAppHeader = React.memo<IProps>(({embedded, title, nav, body}, next, cls = useStyles()) => (
 	<div className={cls.container}>
 		<AppBar position='static' className={embedded || window['_$embedded'] ? cls.ctnAppBar : undefined}>
 			<Toolbar>
