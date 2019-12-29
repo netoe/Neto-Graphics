@@ -9,7 +9,7 @@ export const useStyles = makeStyles((theme: Theme) =>
 
 		headerLogoBox: {height: '45px', width: '45px', marginRight: 8},
 		headerLogoImg: {height: '45px', width: '45px'},
-		headerTitle: {fontWeight: 'bold', fontSize: '1.75em'},
+		headerTitle: {fontWeight: 'bold', fontSize: '1.75em', flex: 1},
 
 		// @see https://github.com/zhanbei/Web-App-Layout#Fixed-Secondary-APP-Bar
 		// Use a "overflow: auto" to keep the height flexible as the "flex: 1" expected.

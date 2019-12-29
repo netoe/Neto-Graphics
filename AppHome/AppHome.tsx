@@ -7,8 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import {useLocalizedResourcesFromContext} from 'src/graphic/mui-lib/hooks/useLanguage';
 import {DynamicalApplications} from '../applications/DynamicalApplicationsImporter';
 import {DynamicalApplicationsLoader} from '../applications/DynamicalApplicationsLoader';
+import {AppLanguagesSelector} from '../components/AppLanguagesSelector';
 import {AppNavigator, IMenuItem} from '../components/AppNavigator';
-import {UN_LANGUAGES} from '../mui-lib/resources/languages';
 import {URM} from '../resources/resources';
 import {RB} from './resources';
 import {useStyles} from './styles';
@@ -24,9 +24,6 @@ export const AppHome = React.memo(({onSetLanguage}: IProps) => {
 
 	const [selected, setSelected] = React.useState(undefined as IMenuItem | undefined);
 
-	console.log('scheduled language timer:', new Date());
-	setTimeout(() => onSetLanguage(UN_LANGUAGES.CHINESE), 15 * 1000);
-
 	const onMenuClick = (menu: IMenuItem) => {
 		setSelected(menu);
 		console.log('clicked', menu);
@@ -37,6 +34,7 @@ export const AppHome = React.memo(({onSetLanguage}: IProps) => {
 			<Toolbar>
 				<div className={cls.headerLogoBox}><img className={cls.headerLogoImg} src={URM.logo}/></div>
 				<Typography variant="h6" color="inherit" className={cls.headerTitle}>{R.title}</Typography>
+				<AppLanguagesSelector onSetLanguage={onSetLanguage}/>
 			</Toolbar>
 		</AppBar>
 	);
