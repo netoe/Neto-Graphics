@@ -84,16 +84,14 @@ export const PageSchedule = React.memo<IProps>(({schedule}) => {
 	// TableScheduleActions.tsx
 	const renderScheduleActions = () => (
 		<TableScheduleActions
-			keyEntryId={'_id'}
-			onSelectEntry={onRowSelected}
-			selectedEntryId={selectedAction?._id}
-			placeholder={'Fine'}
-			entries={schedule.actions}
+			keyEntryId={'_id'} align='center'
+			selectedEntryId={selectedAction?._id} onSelectEntry={onRowSelected}
+			entries={schedule.actions} placeholder={'Fine'}
 			columns={[
 				// newTableColumn('_id', 'ID', 'center'),
-				newTableColumn('name', 'Name', 'center'),
-				newTableColumn('key', 'Key', 'center'),
-				newTableColumn('name', 'Description', 'left'),
+				newTableColumn('name', 'Name'),
+				newTableColumn('key', 'Key'),
+				newTableColumn('name', 'Description', {align: 'left'}),
 			]}
 		/>
 	);
@@ -101,18 +99,16 @@ export const PageSchedule = React.memo<IProps>(({schedule}) => {
 	// TableScheduleReceipts.tsx
 	const renderScheduleReceipts = () => (
 		<TableScheduleReceipts
-			keyEntryId={'_id'}
-			onSelectEntry={onReceiptSelected}
-			selectedEntryId={selectedReceipt?._id}
-			placeholder={'Fine'}
-			entries={receipts}
+			keyEntryId={'_id'} align='center'
+			selectedEntryId={selectedReceipt?._id} onSelectEntry={onReceiptSelected}
+			entries={receipts} placeholder={'Fine'}
 			columns={[
 				// newTableColumn('_id', 'ID', 'center'),
-				newTableColumn('_id', 'ID', 'center'),
-				newTableColumn('taskId', 'Task', 'center'),
-				newTableColumn('code', 'Code', 'center'),
-				newTableColumn('duration', 'Duration', 'center', undefined, undefined, (entry, value) => (value / 1000).toFixed(2) + 's'),
-				newTableColumn('time', 'Time', 'center', undefined, undefined, (entry, value, index) => new Date(value).toLocaleString()),
+				newTableColumn('_id', 'ID'),
+				newTableColumn('taskId', 'Task'),
+				newTableColumn('code', 'Code'),
+				newTableColumn('duration', 'Duration', undefined, (entry, value) => (value / 1000).toFixed(2) + 's'),
+				newTableColumn('time', 'Time', undefined, (entry, value, index) => new Date(value).toLocaleString()),
 			]}
 		/>
 	);
