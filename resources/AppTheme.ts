@@ -27,6 +27,7 @@ export const appMuiTheme: Theme = createMuiTheme({
 				// Making the button not uppercase by default,
 				// since we can manually set the text uppercase.
 				textTransform: 'inherit',
+				fontWeight: 'bold',
 			},
 		},
 	},
