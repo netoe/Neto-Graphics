@@ -11,16 +11,17 @@
 
 import {IMenuItem} from '../components/AppNavigator';
 import {ExtendedFetcherManager} from '../helpers/ExtendedFetcherManager';
-import {AppHome as AppDashboards} from '../Neto-Dashboards/AppHome/AppHome';
 import {URM} from '../resources/resources';
 import {IBuiltinApplication} from './BuiltinApplications';
+import {R} from './DynamicalApplications.resources';
 
 export interface IDynamicalApp extends IMenuItem {
 	doImport: () => Promise<IBuiltinApplication>;
 	status: ExtendedFetcherManager<IBuiltinApplication>;
 }
 
-const newApp = (icon: string, text: string, importer: () => Promise<IBuiltinApplication>): IDynamicalApp => {
+const newApp = (app: { icon: string, en: string, zh: string }, importer: () => Promise<IBuiltinApplication>): IDynamicalApp => {
+	const text = app.en;
 	const status = new ExtendedFetcherManager<IBuiltinApplication>();
 	const doImport = () => importer().then(module => {
 		status.fetched(module);
@@ -32,7 +33,7 @@ const newApp = (icon: string, text: string, importer: () => Promise<IBuiltinAppl
 	});
 	return {
 		id: `app-${text.trim().toLowerCase()}`,
-		icon, text,
+		...app, text: app.en,
 		doImport, status,
 	};
 };
@@ -41,24 +42,24 @@ const newApp = (icon: string, text: string, importer: () => Promise<IBuiltinAppl
 // @see https://webpack.js.org/guides/public-path
 __webpack_public_path__ = URM.pathPrefixDynamicalImports;
 // @see https://babeljs.io/docs/en/babel-plugin-syntax-dynamic-import
-const appDashboards = newApp('dashboards.png', 'Dashboards', () => import(/* webpackChunkName: "AppDashboards" */'./AppDashboards'));
-const appWorkspace = newApp('workspace.png', 'Workspace', () => import(/* webpackChunkName: "AppWorkspace" */'./AppWorkspace'));
-const appScheduler = newApp('schedules.png', 'Schedules', () => import(/* webpackChunkName: "AppScheduler" */'./AppScheduler'));
-const appNoting = newApp('noting.png', 'Notes', () => import(/* webpackChunkName: "AppWorkspace" */'./AppWorkspace'));
-const appMarketplace = newApp('calendar.png', 'Calendar', () => import(/* webpackChunkName: "AppScheduler" */'./AppScheduler'));
+const appDashboards = newApp(R.dashboards, () => import(/* webpackChunkName: "AppDashboards" */'./AppDashboards'));
+const appWorkspace = newApp(R.workspace, () => import(/* webpackChunkName: "AppWorkspace" */'./AppWorkspace'));
+const appScheduler = newApp(R.schedules, () => import(/* webpackChunkName: "AppScheduler" */'./AppScheduler'));
+const appNoting = newApp(R.noting, () => import(/* webpackChunkName: "AppWorkspace" */'./AppWorkspace'));
+const appCalendar = newApp(R.calendar, () => import(/* webpackChunkName: "AppScheduler" */'./AppScheduler'));
 
-const appActivities = newApp('activities.png', 'Activities', () => import(/* webpackChunkName: "AppScheduler" */'./AppWorkspace'));
-const appNews = newApp('news.png', 'Subscriptions', () => import(/* webpackChunkName: "AppScheduler" */'./AppScheduler'));
+const appActivities = newApp(R.activities, () => import(/* webpackChunkName: "AppScheduler" */'./AppWorkspace'));
+const appNews = newApp(R.newses, () => import(/* webpackChunkName: "AppScheduler" */'./AppScheduler'));
 
 // Infra Tools
-const infraTextTailor = newApp('text-tailor.png', 'Text Tailor', () => import(/* webpackChunkName: "AppTextTailor" */'./AppTextTailor'));
+const infraTextTailor = newApp(R.infraTextTailor, () => import(/* webpackChunkName: "AppTextTailor" */'./AppTextTailor'));
 
 export const DynamicalApplications: IDynamicalApp[] = [
 	appDashboards,
 	appWorkspace,
 	appScheduler,
 	appNoting,
-	appMarketplace,
+	appCalendar,
 	appActivities,
 	appNews,
 	infraTextTailor,

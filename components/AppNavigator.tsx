@@ -1,9 +1,12 @@
 //
 
 import React from 'react';
+import {usePreferredLanguageFromContext} from 'src/graphic/mui-lib/hooks/useLanguage';
+import {IUnLanguages} from '../mui-lib/resources/languages';
 import {MenuIconBox} from '../views/MenuIconBox';
 
-export interface IMenuItem {
+// TODO Rename to #INavApp
+export interface IMenuItem extends IUnLanguages {
 	id: string;
 	text: string;
 	icon: string;
@@ -16,6 +19,7 @@ interface IProps {
 
 export const AppNavigator = React.memo<IProps>(({pages, onSelected}: IProps) => {
 	// const cls = useStyles();
+	const language = usePreferredLanguageFromContext();
 	const [selected, setSelected] = React.useState(pages[0] as IMenuItem | undefined);
 	const onMenuClick = (menu: IMenuItem) => {
 		if (selected === menu) {return;}
@@ -29,7 +33,7 @@ export const AppNavigator = React.memo<IProps>(({pages, onSelected}: IProps) => 
 			{pages.map((page, index) => (
 				<MenuIconBox
 					key={index}
-					icon={page.icon} text={page.text}
+					icon={page.icon} text={page[language] || page.text}
 					selected={selected === page}
 					onClick={() => onMenuClick(page)}
 				/>
