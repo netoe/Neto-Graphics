@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {INavApp} from 'src/loader/TypedAppsLoader';
-import {usePreferredLanguageFromContext} from 'src/graphic/mui-lib/hooks/useLanguage';
+import {usePreferredLanguageFromContext} from 'src/mui-lib/hooks/useLanguage';
 import {MenuIconBox} from '../views/MenuIconBox';
 
 interface IProps {

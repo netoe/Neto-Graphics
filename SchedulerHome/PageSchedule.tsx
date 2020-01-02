@@ -3,12 +3,12 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import {Schedule} from '../../core/scheduler/schedule';
-import {IAction} from '../../core/scheduler/typed/actions';
-import {IScheduleReceipt} from '../../core/scheduler/typed/receipts';
+import {Schedule} from 'src/core/scheduler/schedule';
+import {IAction} from 'src/core/scheduler/typed/actions';
+import {IScheduleReceipt} from 'src/core/scheduler/typed/receipts';
+import {ViewLabelsAndValues} from 'src/mui-lib/views/ViewLabelsAndValues';
+import {getViewSelectableTable, newTableColumn} from 'src/mui-lib/widgets/TableSelectableRows';
 import {getNetoScheduleReceiptsManager} from '../helpers/bridge-neto-core';
-import {ViewLabelsAndValues} from '../mui-lib/views/ViewLabelsAndValues';
-import {getViewSelectableTable, newTableColumn} from '../mui-lib/widgets/TableSelectableRows';
 import {useStyles} from './PageSchedule.styles';
 
 interface IProps {

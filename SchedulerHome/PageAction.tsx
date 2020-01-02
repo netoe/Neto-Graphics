@@ -4,8 +4,8 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import {IAction} from '../../core/scheduler/typed/actions';
-import {ViewLabelsAndValues} from '../mui-lib/views/ViewLabelsAndValues';
+import {IAction} from 'src/core/scheduler/typed/actions';
+import {ViewLabelsAndValues} from 'src/mui-lib/views/ViewLabelsAndValues';
 import {useStyles} from './PageSchedule.styles';
 
 interface IProps {

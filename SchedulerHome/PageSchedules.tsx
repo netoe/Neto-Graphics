@@ -1,10 +1,10 @@
 //
 
 import React from 'react';
-import {Schedule} from '../../core/scheduler/schedule';
-import {GroupedButtons} from '../mui-lib/widgets/GroupedButtons';
-import {GroupedIconButtons} from '../mui-lib/widgets/GroupedIconButtons';
-import {EnumViewModes, ViewModeIconsDefaultDesktop} from '../mui-lib/widgets/GroupedViewModes';
+import {Schedule} from 'src/core/scheduler/schedule';
+import {GroupedButtons} from 'src/mui-lib/widgets/GroupedButtons';
+import {GroupedIconButtons} from 'src/mui-lib/widgets/GroupedIconButtons';
+import {EnumViewModes, ViewModeIconsDefaultDesktop} from 'src/mui-lib/widgets/GroupedViewModes';
 import {CardSchedule} from '../views/CardSchedule';
 import {RR} from './resources';
 import {useStyles} from './styles';

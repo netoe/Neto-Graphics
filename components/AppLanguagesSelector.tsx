@@ -7,7 +7,7 @@ import IconArrowDown from '@material-ui/icons/KeyboardArrowDown';
 import {makeStyles} from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import {UN_LANGUAGES as un} from '../mui-lib/resources/languages';
+import {UN_LANGUAGES as un} from 'src/mui-lib/resources/languages';
 
 const useStyles = makeStyles({
 	root: {maxWidth: 360},

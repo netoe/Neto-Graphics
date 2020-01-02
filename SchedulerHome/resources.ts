@@ -1,10 +1,10 @@
 'use strict';
 
-import {Schedule} from '../../core/scheduler/schedule';
-import {IAction} from '../../core/scheduler/typed/actions';
+import {Schedule} from 'src/core/scheduler/schedule';
+import {IAction} from 'src/core/scheduler/typed/actions';
+import {defineNewGroupedButton} from 'src/mui-lib/widgets/GroupedButtons';
 import {getAppSecondaryMenu, IMenuSection, newMenuItem, newMenuSection} from '../components/AppSecondaryMenu';
 import {IMenuScriptItem} from '../Infra-Tools/Text-Tailor/AppMenus.resources';
-import {defineNewGroupedButton} from '../mui-lib/widgets/GroupedButtons';
 
 export const R = {
 	title: 'Scheduler',
