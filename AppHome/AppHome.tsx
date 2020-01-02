@@ -46,7 +46,7 @@ export const AppHome = React.memo(({onSetLanguage}: IProps) => {
 				<AppNavigator pages={DynamicalApplications} onSelected={onMenuClick}/>
 			</div>
 			<div className={cls.content}>
-				<DynamicalApplicationsLoader page={selected}/>
+				<DynamicalApplicationsLoader pages={DynamicalApplications} page={selected}/>
 			</div>
 		</div>
 	);
