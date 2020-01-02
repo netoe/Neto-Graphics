@@ -14,7 +14,7 @@ __webpack_public_path__ = URM.pathPrefixDynamicalImports;
 const appDashboards = newApp(R.dashboards, () => import(/* webpackChunkName: "AppDashboards" */'./AppDashboards'));
 const appWorkspace = newApp(R.workspace, () => import(/* webpackChunkName: "AppWorkspace" */'./AppWorkspace'));
 const appScheduler = newApp(R.schedules, () => import(/* webpackChunkName: "AppScheduler" */'./AppScheduler'));
-const appNoting = newApp(R.noting, () => import(/* webpackChunkName: "AppWorkspace" */'./AppWorkspace'));
+const appNoting = newApp(R.noting, () => import(/* webpackChunkName: "AppNoting" */'./AppNoting'));
 const appCalendar = newApp(R.calendar, () => import(/* webpackChunkName: "AppScheduler" */'./AppScheduler'));
 
 const appActivities = newApp(R.activities, () => import(/* webpackChunkName: "AppScheduler" */'./AppWorkspace'));
