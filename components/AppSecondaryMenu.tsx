@@ -19,11 +19,17 @@ interface IBaseMenuItem {
 
 export interface IMenuItem extends IBaseMenuItem {}
 
+// Serves for similar summary pages, like overview(s of kinds of assets), preferences, or other standalone pages.
+export interface IMenuSummaryPage extends IMenuItem {
+	description?: string;
+}
+
 export interface IMenuSection<T extends IMenuItem = IMenuItem> extends IBaseMenuItem {
 	items: T[];
 }
 
 export const newMenuItem = (id: string, name: string): IMenuItem => ({_id: id, name});
+export const newMenuSummaryItem = (id: string, name: string, description?: string): IMenuSummaryPage => ({...newMenuItem(id, name), description});
 export const newMenuSection = <T extends IMenuItem>(id: string, name: string, items: T[]): IMenuSection<T> => ({_id: id, name, items});
 
 interface IProps<T extends IMenuItem, S extends IMenuSection<T>> {
@@ -37,7 +43,7 @@ interface IProps<T extends IMenuItem, S extends IMenuSection<T>> {
 	itemBackground?: string;
 
 	sections: S[];
-	selectedMenuItemId: string;
+	selectedMenuItemId?: string;
 	onSelect: (entryId: string, item: T, section: S) => any;
 }
 
@@ -85,3 +91,7 @@ const AppSecondaryMenu = React.memo(<T extends IMenuItem, S extends IMenuSection
 });
 
 export const getAppSecondaryMenu = <T extends IMenuItem = IMenuItem, S extends IMenuSection<T> = IMenuSection<T>>(): React.FC<IProps<T, S>> => AppSecondaryMenu;
+
+export const AppSecondaryMenuGroup = React.memo(({children}) => (
+	<div style={{backgroundColor: '#e8e8e8'}}>{children}</div>
+));
