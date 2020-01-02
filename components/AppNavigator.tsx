@@ -1,27 +1,20 @@
 //
 
 import React from 'react';
+import {INavApp} from 'src/loader/TypedAppsLoader';
 import {usePreferredLanguageFromContext} from 'src/graphic/mui-lib/hooks/useLanguage';
-import {IUnLanguages} from '../mui-lib/resources/languages';
 import {MenuIconBox} from '../views/MenuIconBox';
 
-// TODO Rename to #INavApp
-export interface IMenuItem extends IUnLanguages {
-	id: string;
-	text: string;
-	icon: string;
-}
-
 interface IProps {
-	pages: IMenuItem[];
-	onSelected: (menu: IMenuItem) => any;
+	pages: INavApp[];
+	onSelected: (menu: INavApp) => any;
 }
 
 export const AppNavigator = React.memo<IProps>(({pages, onSelected}: IProps) => {
 	// const cls = useStyles();
 	const language = usePreferredLanguageFromContext();
-	const [selected, setSelected] = React.useState(pages[0] as IMenuItem | undefined);
-	const onMenuClick = (menu: IMenuItem) => {
+	const [selected, setSelected] = React.useState(pages[0] as INavApp | undefined);
+	const onMenuClick = (menu: INavApp) => {
 		if (selected === menu) {return;}
 		onSelected(menu);
 		setSelected(menu);

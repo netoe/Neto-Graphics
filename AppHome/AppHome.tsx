@@ -4,11 +4,12 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import {INavApp} from 'src/loader/TypedAppsLoader';
+import {DynamicalApplicationsLoader} from 'src/loader/DynamicalApplicationsLoader';
 import {useLocalizedResourcesFromContext} from 'src/graphic/mui-lib/hooks/useLanguage';
 import {DynamicalApplications} from '../applications/DynamicalApplicationsImporter';
-import {DynamicalApplicationsLoader} from '../applications/DynamicalApplicationsLoader';
 import {AppLanguagesSelector} from '../components/AppLanguagesSelector';
-import {AppNavigator, IMenuItem} from '../components/AppNavigator';
+import {AppNavigator} from '../components/AppNavigator';
 import {URM} from '../resources/resources';
 import {RB} from './resources';
 import {useStyles} from './styles';
@@ -22,9 +23,9 @@ export const AppHome = React.memo(({onSetLanguage}: IProps) => {
 	const cls = useStyles();
 	const R = useLocalizedResourcesFromContext(RB);
 
-	const [selected, setSelected] = React.useState(undefined as IMenuItem | undefined);
+	const [selected, setSelected] = React.useState(undefined as INavApp | undefined);
 
-	const onMenuClick = (menu: IMenuItem) => {
+	const onMenuClick = (menu: INavApp) => {
 		setSelected(menu);
 		console.log('clicked', menu);
 	};
