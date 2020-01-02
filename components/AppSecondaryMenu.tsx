@@ -92,6 +92,10 @@ const AppSecondaryMenu = React.memo(<T extends IMenuItem, S extends IMenuSection
 
 export const getAppSecondaryMenu = <T extends IMenuItem = IMenuItem, S extends IMenuSection<T> = IMenuSection<T>>(): React.FC<IProps<T, S>> => AppSecondaryMenu;
 
-export const AppSecondaryMenuGroup = React.memo(({children}) => (
-	<div style={{backgroundColor: '#e8e8e8'}}>{children}</div>
-));
+export const AppSecondaryMenuGroup = React.memo(({children}) => {
+	const cls = useStyles();
+	// How to write the codes of simple components in fewer lines?
+	return (
+		<div className={cls.group}>{children}</div>
+	);
+});
