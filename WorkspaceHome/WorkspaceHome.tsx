@@ -1,7 +1,7 @@
 //
 
 import React from 'react';
-import {LayoutAppHeader} from '../components/LayoutAppHeader';
+import {LayoutAppHeader} from 'src/mui-views/app/LayoutAppHeader';
 import {R} from './resources';
 import {useStyles} from './styles';
 

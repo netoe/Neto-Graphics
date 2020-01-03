@@ -6,9 +6,9 @@ import {IAction} from '../../core/scheduler/typed/actions';
 // FIXME About the imports of interfaces; always keep the definitions of types separated.
 import {IScheduleReceipt} from '../../core/scheduler/typed/receipts';
 import {mDemoActions, mDemoSchedules} from '../../core/schedulerx/demo-schedules';
-import {IMenuItem, IMenuSection} from '../components/AppSecondaryMenu';
+import {IMenuItem, IMenuSection} from 'src/mui-views/app/AppSecondaryMenu';
 // FIXME For neto web applications.
-import {LayoutAppHeader} from '../components/LayoutAppHeader';
+import {LayoutAppHeader} from 'src/mui-views/app/LayoutAppHeader';
 import {doReportTheLostOfNetoBridge, getNetoDemoAndDevelopment, getNetoScheduleReceiptsManager} from '../helpers/bridge-neto-core';
 import {PageAction} from './PageAction';
 import {PageSchedule} from './PageSchedule';
