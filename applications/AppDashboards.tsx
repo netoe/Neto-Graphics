@@ -1,5 +1,6 @@
 //
 
-import {AppHome as AppDashboards} from '../Neto-Dashboards/AppHome/AppHome';
+import {AppHome} from '../Neto-Dashboards/AppHome/AppHome';
 
-export default AppDashboards;
+export const AppDashboards = AppHome;
+export default AppHome;

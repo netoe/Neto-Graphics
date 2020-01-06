@@ -2,4 +2,5 @@
 
 import {WorkspaceHome} from '../WorkspaceHome/WorkspaceHome';
 
+export const AppWorkspace = WorkspaceHome;
 export default WorkspaceHome;

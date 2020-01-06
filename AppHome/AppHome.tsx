@@ -8,7 +8,7 @@ import {INavApp} from 'src/loader/TypedAppsLoader';
 import {DynamicalApplicationsLoader} from 'src/loader/DynamicalApplicationsLoader';
 import {useLocalizedResourcesFromContext} from 'src/mui-lib/hooks/useLanguage';
 import {AppLanguagesSelector} from 'src/mui-views/app/AppLanguagesSelector';
-import {DynamicalApplications} from '../applications/DynamicalApplicationsImporter';
+import {SidebarApplications} from '../applications/DynamicalApplicationsImporter';
 import {AppNavigator} from '../components/AppNavigator';
 import {URM} from '../resources/resources';
 import {RB} from './resources';
@@ -43,10 +43,10 @@ export const AppHome = React.memo(({onSetLanguage}: IProps) => {
 	const renderBody = () => (
 		<div className={cls.body}>
 			<div className={cls.nav}>
-				<AppNavigator pages={DynamicalApplications} onSelected={onMenuClick}/>
+				<AppNavigator pages={SidebarApplications} onSelected={onMenuClick}/>
 			</div>
 			<div className={cls.content}>
-				<DynamicalApplicationsLoader pages={DynamicalApplications} page={selected}/>
+				<DynamicalApplicationsLoader pages={SidebarApplications} page={selected}/>
 			</div>
 		</div>
 	);

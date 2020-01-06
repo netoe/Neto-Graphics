@@ -2,4 +2,5 @@
 
 import {SchedulerHome} from '../SchedulerHome/SchedulerHome';
 
+export const AppScheduler = SchedulerHome;
 export default SchedulerHome;
