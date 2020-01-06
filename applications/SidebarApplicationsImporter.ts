@@ -1,13 +1,13 @@
 //
 
-import {ISidebarApp} from 'src/loader/TypedAppsLoader';
-import {newBuiltinApp, newDynamicalApp} from 'src/loader/DynamicalAppConstructor';
+import {ISidebarApp} from 'src/loader/TypedSidebarApps';
+import {newBuiltinApp, newDynamicalApp} from 'src/loader/SidebarAppsConstructor';
 import {URM} from '../resources/resources';
 import {AppDashboards} from './AppDashboards';
 import {AppNoting} from './AppNoting';
 import {AppScheduler} from './AppScheduler';
 import {AppWorkspace} from './AppWorkspace';
-import {R} from './DynamicalApplications.resources';
+import {R} from './SidebarApplications.resources';
 
 const newApp = newDynamicalApp;
 const withApp = newBuiltinApp;

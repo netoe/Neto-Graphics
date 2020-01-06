@@ -4,11 +4,11 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import {INavApp} from 'src/loader/TypedAppsLoader';
-import {DynamicalApplicationsLoader} from 'src/loader/DynamicalApplicationsLoader';
+import {INavApp} from 'src/loader/TypedSidebarApps';
+import {SidebarApplicationsLoader} from 'src/loader/SidebarApplicationsLoader';
 import {useLocalizedResourcesFromContext} from 'src/mui-lib/hooks/useLanguage';
 import {AppLanguagesSelector} from 'src/mui-views/app/AppLanguagesSelector';
-import {SidebarApplications} from '../applications/DynamicalApplicationsImporter';
+import {SidebarApplications} from '../applications/SidebarApplicationsImporter';
 import {AppNavigator} from '../components/AppNavigator';
 import {URM} from '../resources/resources';
 import {RB} from './resources';
@@ -46,7 +46,7 @@ export const AppHome = React.memo(({onSetLanguage}: IProps) => {
 				<AppNavigator pages={SidebarApplications} onSelected={onMenuClick}/>
 			</div>
 			<div className={cls.content}>
-				<DynamicalApplicationsLoader pages={SidebarApplications} page={selected}/>
+				<SidebarApplicationsLoader pages={SidebarApplications} page={selected}/>
 			</div>
 		</div>
 	);

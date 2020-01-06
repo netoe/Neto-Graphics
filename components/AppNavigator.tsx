@@ -1,7 +1,7 @@
 //
 
 import React from 'react';
-import {INavApp} from 'src/loader/TypedAppsLoader';
+import {INavApp} from 'src/loader/TypedSidebarApps';
 import {usePreferredLanguageFromContext} from 'src/mui-lib/hooks/useLanguage';
 import {MenuIconBox} from '../views/MenuIconBox';
 
