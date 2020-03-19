@@ -3,4 +3,4 @@
 	url = https://github.com/zhanbei/Infra-Tools.git
 [submodule "Neto-Dashboards"]
 	path = Neto-Dashboards
-	url = https://github.com/netoe/Neto-Dashboards.git
+	url = https://github.com/netoll/Neto-Dashboards.git
